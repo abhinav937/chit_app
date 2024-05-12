@@ -241,6 +241,23 @@ class CalculatedPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Calculated Data'),
+        actions: [
+          FilledButton(
+            onPressed: () {
+              // Handle save functionality here
+              // You can implement your save logic, e.g., saving data to a database
+            },
+            child: const Text(
+              'Save',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+          ),
+          const SizedBox(width: 16),
+        ],
       ),
       body: ListView.builder(
         itemCount: calculatedData.length * 2 - 1, // Twice as many items to account for separators
@@ -260,6 +277,7 @@ class CalculatedPage extends StatelessWidget {
     );
   }
 }
+
 
 
 // ignore: non_constant_identifier_names
