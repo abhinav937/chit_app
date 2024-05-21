@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:chit_app/pages/homepage.dart';
+// ignore_for_file: use_super_parameters
 
+import 'package:flutter/material.dart';
+import './pages/chit_form.dart'; // Import the file where chit_form function is defined
 
 void main() {
   runApp(const MyApp());
@@ -15,22 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Chit Calculator',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(0, 0, 0,0)),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(0, 0, 0, 0)),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Seetu'),
@@ -38,3 +24,38 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          widget.title,
+          style: const TextStyle(
+            fontWeight: FontWeight.w500, // Change the font weight to bold
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          // Call chit_form when the button is pressed
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ChitForm()),
+          );
+        },
+        label: const Text('New Seetu'),
+        icon: const Icon(Icons.add),
+      ),
+    );
+  }
+}
